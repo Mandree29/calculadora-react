@@ -13,77 +13,74 @@ function Calculadora(){
   const [acompanhamento,setAcompanhamento] = useState(estado)
   const [numeradores, setNumeradores] = useState(Array(3).fill(null))
 
-  function handleNumerador(n){
-   if(estado == 'Ini'){
-        n = n + ''
-        setTela(n)
-        numeradores[0] = tela
-        setNumeradores(numeradores)
-        console.log(numeradores)
-        setEstado('N1')
-        setAcompanhamento(estado)
-
-   }
-   else if(estado == 'N1'){
-        n = n + ''
-        setTela(tela + n)
-        numeradores[0] = tela
-        setNumeradores(numeradores)
-        console.log(numeradores)
-        setEstado('N2init')
-
-    }else if(estado == 'N2init'){
-       setAcompanhamento(estado)
-       n = n + ''
-       numeradores[2] = n
-       console.log(numeradores)
-       setTela(n)
-       setNumeradores(numeradores)
-       setEstado('N2')
-       
-
-    }else if(estado == 'N2'){
-        n = n + ''
-        setTela(tela + n)
-        numeradores[2] = tela
-        setNumeradores(numeradores)
-        console.log(numeradores)
-
+function handleNumerador(n){
+    switch(estado){
+        case 'Ini':
+            n = n + ''
+            setTela(n)
+            numeradores[0] = tela
+            setNumeradores(numeradores)
+            console.log(numeradores)
+            setEstado('N1')
+            break
+        case 'N1':
+            n = n + ''
+            setTela(tela + n)
+            numeradores[0] = tela
+            setNumeradores(numeradores)
+            console.log(numeradores)
+            break
+        case 'N2init':
+            n = n + ''
+            setTela(n)
+            numeradores[2] = tela
+            setNumeradores(numeradores)
+            console.log(numeradores)
+            setEstado('N2')
+            break
+        case 'N2':
+            n = n + ''
+            setTela(tela + n)
+            numeradores[2] = tela
+            setNumeradores(numeradores)
+            console.log(numeradores)
+            break
     }
-  }
-  function handleOperator(o){
+}
+
+function handleOperator(o){
     if(estado == 'N1'){
         setEstado('N2init')
-        if(o == '+'){
-            setAcompanhamento('SOMA')
-            numeradores[0] = tela
-            numeradores[1] = o
-            setNumeradores(numeradores)
-
-        }else if(o == 'X'){
-            setAcompanhamento('MULTI')
-            numeradores[0] = tela
-            numeradores[1] = o
-            setNumeradores(numeradores)
-
-        }else if(o == '/'){
-            setAcompanhamento('DIVI')
-            numeradores[0] = tela
-            numeradores[1] = o
-            setNumeradores(numeradores)
-
-        }else if(o == '-'){
-            setAcompanhamento('SUB') }
-            numeradores[0] = tela
-            numeradores[1] = o
-            setNumeradores(numeradores)
+        switch(o){
+            case '+':
+               numeradores[0] = tela
+               numeradores[1] = o
+               setNumeradores(numeradores)
+               console.log(numeradores)
+               break
+            case 'X':
+               numeradores[0] = tela
+               numeradores[1] = o
+               setNumeradores(numeradores)
+               console.log(numeradores)
+               break
+            case '/':
+               numeradores[0] = tela
+               numeradores[1] = o
+               setNumeradores(numeradores)
+               break
+            case '+':
+               numeradores[0] = tela
+               numeradores[1] = o
+               setNumeradores(numeradores)
+               break
+        }
     }
-    console.log(numeradores)
-  }
-
+}
   function igual(){
     let resultado 
     let op
+    numeradores[2] = tela
     if(numeradores[0] != null && numeradores[2] != null){
         numeradores[0] = parseInt(numeradores[0])
         numeradores[2] = parseInt(numeradores[2])
@@ -160,3 +157,4 @@ function Calculadora(){
 }
 
 export default Calculadora
+
