@@ -1,0 +1,11 @@
+#corpo{
+    height: 300px;
+    width: 200px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    padding-top: 1%;
+    flex-wrap: wrap;
+    gap: 2%;
+    border-radius: 2%;
+}

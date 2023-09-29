@@ -1,0 +1,19 @@
+#visor{
+    width: 168px;
+    height: 56px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+#visor{
+    padding-right: 5%;
+    padding-bottom: 5%;
+}
+
+#acompanhamento{
+    position: relative;
+    bottom: 44%;
+    right: 87%;
+    font-size: 0.7rem;
+}
