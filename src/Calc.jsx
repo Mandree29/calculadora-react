@@ -5,6 +5,8 @@ import Numero from './Numero'
 import Operator from './Operador'
 import Decimal from './decimal'
 import Igual from './igual'
+import Reset from './Reset'
+import Backspace from './Backspace'
 import { useState } from 'react'
 
 function Calculadora(){
@@ -12,6 +14,14 @@ function Calculadora(){
   const [estado,setEstado] = useState('Ini')
   const [acompanhamento,setAcompanhamento] = useState(estado)
   const [numeradores, setNumeradores] = useState(Array(3).fill(null))
+
+function reset(){
+    setTela('0')
+    setEstado('Ini')
+    setAcompanhamento(estado)
+    setNumeradores(Array(3).fill(null))
+    console.log(numeradores)
+}
 
 function handleNumerador(n){
     switch(estado){
@@ -69,7 +79,7 @@ function handleOperator(o){
                numeradores[1] = o
                setNumeradores(numeradores)
                break
-            case '+':
+            case '-':
                numeradores[0] = tela
                numeradores[1] = o
                setNumeradores(numeradores)
@@ -135,7 +145,10 @@ function handleOperator(o){
 }
     return (
         <div id='corpo'>
+        
           <Display value={tela} acompanhamento={estado}/>
+          <Reset clickHandle={() =>reset()}/>
+          <Backspace/>
           <Numero value={7} clickHandle={() => handleNumerador(7)}/>
           <Numero value={8} clickHandle={() => handleNumerador(8)}/>
           <Numero value={9} clickHandle={() => handleNumerador(9)}/>
